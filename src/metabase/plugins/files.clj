@@ -13,9 +13,12 @@
              [i18n :refer [trs]]])
   (:import java.io.FileNotFoundException
            java.net.URL
-           [java.nio.file CopyOption Files FileSystem FileSystems LinkOption OpenOption Path]
+           [java.nio.file Files FileSystem FileSystems LinkOption OpenOption Path]
            java.nio.file.attribute.FileAttribute
-           java.util.Collections))
+           java.util.Collections
+           [java.util.jar JarOutputStream Pack200]
+           java.util.zip.GZIPInputStream
+           org.apache.commons.io.IOUtils))
 
 ;;; --------------------------------------------------- Path Utils ---------------------------------------------------
 
@@ -69,20 +72,29 @@
 
 ;;; ------------------------------------------------- Copying Stuff --------------------------------------------------
 
-(defn- copy! [^Path source, ^Path dest]
+(defn- copy! [compressed?, ^Path source, ^Path dest]
   (du/profile (trs "Extract file {0} -> {1}" source dest)
-    (Files/copy source dest (u/varargs CopyOption))))
+    (with-open [is (Files/newInputStream source (u/varargs OpenOption))
+                os (JarOutputStream. (Files/newOutputStream dest (u/varargs OpenOption)))]
+      (if compressed?
+        (with-open [is (GZIPInputStream. is)]
+          (.unpack (Pack200/newUnpacker) is os))
+        (IOUtils/copy is os)))))
 
-(defn- copy-if-not-exists! [^Path source, ^Path dest]
+(defn- copy-if-not-exists! [compressed?, ^Path source, ^Path dest]
   (when-not (exists? dest)
-    (copy! source dest)))
+    (copy! compressed? source dest)))
+
+(defn- decompressed-filename [^Path file]
+  (str/replace (str (.getFileName file)) #"\.pack\.gz$" ""))
 
 (defn copy-files-if-not-exists!
   "Copy all files in `source-dir` to `dest-dir`; skip files if a file of the same name already exists in `dest-dir`."
   [^Path source-dir, ^Path dest-dir]
   (doseq [^Path source (files-seq source-dir)
-          :let [target (append-to-path dest-dir (str (.getFileName source)))]]
-    (copy-if-not-exists! source target)))
+          :let         [compressed? (str/ends-with? (str (.getFileName source)) ".pack.gz")
+                        target      (append-to-path dest-dir (decompressed-filename source))]]
+    (copy-if-not-exists! compressed? source target)))
 
 
 ;;; ------------------------------------------ Opening filesystems for URLs ------------------------------------------

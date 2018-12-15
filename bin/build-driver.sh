@@ -14,9 +14,9 @@ fi
 # First, remove any existing drivers
 driver_jar="$driver.metabase-driver.jar"
 
-if [ -f resources/modules/"$driver.metabase-driver.jar" ]; then
+if [ -f resources/modules/"$driver.metabase-driver.jar.pack.gz" ]; then
     echo "$driver is already built."
-    echo "To rebuild the driver, delete resources/modules/$driver.metabase-driver.jar and run this script again."
+    echo "To rebuild the driver, delete resources/modules/$driver.metabase-driver.jar.pack.gz and run this script again."
     exit 0
 fi
 
@@ -96,8 +96,25 @@ for parent in $parents; do
     lein strip-and-compress "$target_jar" "resources/modules/$parent.metabase-driver.jar"
 done
 
-# ok, finally, copy finished JAR to the resources dir
-dest_location="$project_root/resources/modules/$driver_jar"
+# now shrink that uberjar with pack200
+pack200_options=''
+pack200_options_file="$driver_project_dir/pack200-options"
+if [ -f "$pack200_options_file"  ]; then
+    pack200_options=`cat "$pack200_options_file"`
+fi
 
-echo "Copying $target_jar -> $dest_location"
-cp "$target_jar" "$dest_location"
+packed_target_jar="$target_jar".pack.gz
+
+pack200 $pack200_options "$packed_target_jar" "$target_jar"
+
+# ok, finally, copy finished JAR to the resources dir
+dest_location="$project_root/resources/modules/$driver_jar.pack.gz"
+
+echo "File size before packing:"
+du -h "$target_jar"
+
+echo "File size after packing:"
+du -h "$packed_target_jar"
+
+echo "Copying $packed_target_jar -> $dest_location"
+cp "$packed_target_jar" "$dest_location"
