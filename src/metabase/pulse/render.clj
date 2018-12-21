@@ -39,8 +39,6 @@
 ;;; ----------------------------------------------------- Styles -----------------------------------------------------
 
 (def ^:private ^:const card-width 400)
-(def ^:private ^:const rows-limit 20)
-(def ^:private ^:const cols-limit 10)
 (def ^:private ^:const sparkline-dot-radius 6)
 (def ^:private ^:const sparkline-thickness 3)
 (def ^:private ^:const sparkline-pad 8)
@@ -161,6 +159,7 @@
 (defn include-csv-attachment?
   "Returns true if this card and resultset should include a CSV attachment"
   [card {:keys [cols rows] :as result-data}]
+  (println (clojure.pprint/pprint card))
   (or (:include_csv card)
       (and (not (:include_xls card))
            (= :table (detect-pulse-card-type card result-data))
@@ -168,8 +167,8 @@
             ;; If some columns are not shown, include an attachment
             (some (complement show-in-table?) cols)
             ;; If there are too many rows or columns, include an attachment
-            (< cols-limit (count cols))
-            (< rows-limit (count rows))))))
+            (< (:max_columns card) (count cols))
+            (< (:max_rows card) (count rows))))))
 
 (defn count-displayed-columns
   "Return a count of the number of columns to be included in a table display"
@@ -433,7 +432,7 @@
 (defn- prep-for-html-rendering
   "Convert the query results (`cols` and `rows`) into a formatted seq of rows (list of strings) that can be rendered as
   HTML"
-  [timezone cols rows bar-column max-value column-limit]
+  [timezone cols rows bar-column max-value column-limit rows-limit]
   (let [remapping-lookup (create-remapping-lookup cols)
         limited-cols (take column-limit cols)]
     (cons
@@ -489,10 +488,10 @@
   (let [table-body [:div
                     (render-table (color/make-color-selector data (:visualization_settings card))
                                   (mapv :name (:cols data))
-                                  (prep-for-html-rendering timezone cols rows nil nil cols-limit))
-                    (render-truncation-warning cols-limit (count-displayed-columns cols) rows-limit (count rows))]]
+                                  (prep-for-html-rendering timezone cols rows nil nil (:max_columns card) (:max_rows card)))
+                    (render-truncation-warning (:max_columns card) (count-displayed-columns cols) (:max_rows card) (count rows))]]
     {:attachments nil
-     :content     (if-let [results-attached (attached-results-text render-type cols cols-limit rows rows-limit)]
+     :content     (if-let [results-attached (attached-results-text render-type cols (:max_columns card) rows (:max_rows card))]
                     (list results-attached table-body)
                     (list table-body))}))
 
@@ -510,8 +509,8 @@
      :content     [:div
                    (render-table (color/make-color-selector data (:visualization_settings card))
                                  (mapv :name cols)
-                                 (prep-for-html-rendering timezone cols rows y-axis-rowfn max-value 2))
-                   (render-truncation-warning 2 (count-displayed-columns cols) rows-limit (count rows))]}))
+                                 (prep-for-html-rendering timezone cols rows y-axis-rowfn max-value 2 (:max_rows card)))
+                   (render-truncation-warning 2 (count-displayed-columns cols) (:max_rows card) (count rows))]}))
 
 (s/defn ^:private render:scalar :- RenderedPulseCard
   [timezone card {:keys [cols rows]}]

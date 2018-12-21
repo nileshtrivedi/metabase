@@ -50,7 +50,7 @@
 
 (defn- prep-for-html-rendering'
   [cols rows bar-column max-value]
-  (let [results (#'render/prep-for-html-rendering pacific-tz cols rows bar-column max-value (count cols))]
+  (let [results (#'render/prep-for-html-rendering pacific-tz cols rows bar-column max-value (count cols) (count rows))]
     [(first results)
      (col-counts results)]))
 
@@ -123,14 +123,14 @@
   [{:bar-width nil, :row [(number "1") (number "34.10") "Apr 1, 2014" "Stout Burgers & Beers"]}
    {:bar-width nil, :row [(number "2") (number "34.04") "Dec 5, 2014" "The Apple Pan"]}
    {:bar-width nil, :row [(number "3") (number "34.05") "Aug 1, 2014" "The Gorbals"]}]
-  (rest (#'render/prep-for-html-rendering pacific-tz test-columns test-data nil nil (count test-columns))))
+  (rest (#'render/prep-for-html-rendering pacific-tz test-columns test-data nil nil (count test-columns) (count test-data))))
 
 ;; Testing the bar-column, which is the % of this row relative to the max of that column
 (expect
   [{:bar-width (float 85.249),  :row [(number "1") (number "34.10") "Apr 1, 2014" "Stout Burgers & Beers"]}
    {:bar-width (float 85.1015), :row [(number "2") (number "34.04") "Dec 5, 2014" "The Apple Pan"]}
    {:bar-width (float 85.1185), :row [(number "3") (number "34.05") "Aug 1, 2014" "The Gorbals"]}]
-  (rest (#'render/prep-for-html-rendering pacific-tz test-columns test-data second 40 (count test-columns))))
+  (rest (#'render/prep-for-html-rendering pacific-tz test-columns test-data second 40 (count test-columns) (count test-data))))
 
 (defn- add-rating
   "Injects `RATING-OR-COL` and `DESCRIPTION-OR-COL` into `COLUMNS-OR-ROW`"
@@ -172,7 +172,7 @@
   [[(number "1") (number "34.10") "Bad" "Apr 1, 2014" "Stout Burgers & Beers"]
    [(number "2") (number "34.04") "Ok" "Dec 5, 2014" "The Apple Pan"]
    [(number "3") (number "34.05") "Good" "Aug 1, 2014" "The Gorbals"]]
-  (map :row (rest (#'render/prep-for-html-rendering pacific-tz test-columns-with-remapping test-data-with-remapping nil nil (count test-columns-with-remapping)))))
+  (map :row (rest (#'render/prep-for-html-rendering pacific-tz test-columns-with-remapping test-data-with-remapping nil nil (count test-columns-with-remapping) 3))))
 
 ;; There should be no truncation warning if the number of rows/cols is fewer than the row/column limit
 (expect
@@ -201,7 +201,7 @@
   [{:bar-width nil, :row [(number "1") (number "34.10") "Apr 1, 2014" "Stout Burgers & Beers"]}
    {:bar-width nil, :row [(number "2") (number "34.04") "Dec 5, 2014" "The Apple Pan"]}
    {:bar-width nil, :row [(number "3") (number "34.05") "Aug 1, 2014" "The Gorbals"]}]
-  (rest (#'render/prep-for-html-rendering pacific-tz test-columns-with-date-special-type test-data nil nil (count test-columns))))
+  (rest (#'render/prep-for-html-rendering pacific-tz test-columns-with-date-special-type test-data nil nil (count test-columns) 3)))
 
 (defn- render-scalar-value [results]
   (-> (#'render/render:scalar pacific-tz nil results)
@@ -349,7 +349,9 @@
                                 :min_value     3
                                 :max_type      "custom"
                                 :max_value     9
-                                :colors        ["#00ff00" "#0000ff"]}]}})
+                                :colors        ["#00ff00" "#0000ff"]}]} 
+    :max_rows 20
+    :max_columns 10})
 
 ;; Smoke test for background color selection. Background color decided by some shared javascript code. It's being
 ;; invoked and included in the cell color of the pulse table. This is somewhat fragile code as the only way to find

@@ -5135,3 +5135,25 @@ databaseChangeLog:
             tableName: query_cache
             columnName: results
             newDataType: longblob
+  - changeSet:
+      id: 98
+      author: nileshtrivedi
+      comment: 'Added 0.32.0'
+      changes:
+        - addColumn:
+            tableName: pulse_card
+            columns:
+              - column:
+                  name: max_rows
+                  type: integer
+                  defaultValueNumeric: 20
+                  remarks: 'How many rows should be included in a pulse table'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_columns
+                  type: integer
+                  defaultValueNumeric: 10
+                  remarks: 'How many columns should be included in a pulse table'
+                  constraints:
+                    nullable: false

@@ -96,7 +96,10 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :foo "bar'"
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -116,7 +119,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -132,7 +137,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -162,7 +169,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -183,7 +192,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id (rasta-id)
                                                         :pulse_channel_id pc-id}]
@@ -204,7 +215,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id-1
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id-2
                                                         :position 1}]
@@ -224,7 +237,9 @@
                                                          :skip_if_empty false}]
                   PulseCard             [pulse-card     {:pulse_id pulse-id
                                                          :card_id  card-id
-                                                         :position 0}]
+                                                         :position 0
+                                                         :max_rows 20
+                                                         :max_columns 10}]
                   PulseChannel          [{pc-id :id}    {:pulse_id pulse-id}]
                   PulseChannelRecipient [_              {:user_id          (rasta-id)
                                                          :pulse_channel_id pc-id}]]
@@ -241,7 +256,9 @@
                                                          :skip_if_empty true}]
                   PulseCard             [pulse-card     {:pulse_id pulse-id
                                                          :card_id  card-id
-                                                         :position 0}]
+                                                         :position 0
+                                                         :max_rows 20
+                                                         :max_columns 10}]
                   PulseChannel          [{pc-id :id}    {:pulse_id pulse-id}]
                   PulseChannelRecipient [_              {:user_id          (rasta-id)
                                                          :pulse_channel_id pc-id}]]
@@ -258,7 +275,9 @@
                                                          :alert_first_only false}]
                   PulseCard             [pulse-card     {:pulse_id pulse-id
                                                          :card_id  card-id
-                                                         :position 0}]
+                                                         :position 0
+                                                         :max_rows 20
+                                                         :max_columns 10}]
                   PulseChannel          [{pc-id :id}    {:pulse_id pulse-id}]
                   PulseChannelRecipient [_              {:user_id          (rasta-id)
                                                          :pulse_channel_id pc-id}]]
@@ -283,7 +302,9 @@
                                                          :alert_first_only false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -304,7 +325,9 @@
                                                          :alert_first_only false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -325,7 +348,9 @@
                                                          :alert_above_goal  true}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -353,7 +378,9 @@
                                                          :alert_above_goal true}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -373,7 +400,9 @@
                                                          :alert_above_goal  true}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -393,7 +422,9 @@
                                                          :alert_above_goal  false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -414,7 +445,9 @@
                                                          :alert_above_goal  false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -469,7 +502,9 @@
                                                     :skip_if_empty false}]
                       PulseCard    [_              {:pulse_id pulse-id
                                                     :card_id  card-id
-                                                    :position 0}]
+                                                    :position 0
+                                                    :max_rows 20
+                                                    :max_columns 10}]
                       PulseChannel [{pc-id :id}    {:pulse_id pulse-id
                                                     :channel_type "slack"
                                                     :details {:channel "#general"}}]]
@@ -503,7 +538,9 @@
                                                     :skip_if_empty false}]
                       PulseCard    [_              {:pulse_id pulse-id
                                                     :card_id  card-id
-                                                    :position 0}]
+                                                    :position 0
+                                                    :max_rows 20
+                                                    :max_columns 10}]
                       PulseChannel [{pc-id :id}    {:pulse_id     pulse-id
                                                     :channel_type "slack"
                                                     :details      {:channel "#general"}}]]
@@ -540,10 +577,14 @@
                                                               :skip_if_empty false}]
                       PulseCard    [_               {:pulse_id pulse-id
                                                               :card_id  card-id-1
-                                                              :position 0}]
+                                                              :position 0
+                                                              :max_rows 20
+                                                              :max_columns 10}]
                       PulseCard    [_               {:pulse_id pulse-id
                                                               :card_id  card-id-2
-                                                              :position 1}]
+                                                              :position 1
+                                                              :max_rows 20
+                                                              :max_columns 10}]
                       PulseChannel [{pc-id :id}     {:pulse_id pulse-id
                                                      :channel_type "slack"
                                                      :details {:channel "#general"}}]]
@@ -584,7 +625,9 @@
                                                              :skip_if_empty false}]
                       PulseCard             [_              {:pulse_id pulse-id
                                                              :card_id  card-id
-                                                             :position 0}]
+                                                             :position 0
+                                                             :max_rows 20
+                                                             :max_columns 10}]
                       PulseChannel          [{pc-id-1 :id}  {:pulse_id pulse-id
                                                              :channel_type "slack"
                                                              :details {:channel "#general"}}]
@@ -623,7 +666,9 @@
                                                     :alert_first_only false}]
                       PulseCard    [_             {:pulse_id pulse-id
                                                    :card_id  card-id
-                                                   :position 0}]
+                                                   :position 0
+                                                   :max_rows 20
+                                                   :max_columns 10}]
                       PulseChannel [{pc-id :id}   {:pulse_id pulse-id
                                                    :channel_type "slack"
                                                    :details {:channel "#general"}}]]
@@ -658,7 +703,9 @@
                                                         :alert_above_goal  true}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -678,7 +725,9 @@
                                                         :alert_above_goal  false}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -696,7 +745,9 @@
                                                          :alert_first_only true}]
                   PulseCard             [_             {:pulse_id pulse-id
                                                         :card_id  card-id
-                                                        :position 0}]
+                                                        :position 0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -714,7 +765,9 @@
                                                          :alert_first_only true}]
                   PulseCard             [pulse-card     {:pulse_id pulse-id
                                                          :card_id  card-id
-                                                         :position 0}]
+                                                         :position 0
+                                                         :max_rows 20
+                                                         :max_columns 10}]
                   PulseChannel          [{pc-id :id}    {:pulse_id pulse-id}]
                   PulseChannelRecipient [_              {:user_id          (rasta-id)
                                                          :pulse_channel_id pc-id}]]
@@ -738,7 +791,9 @@
                   PulseCard             [_             {:pulse_id    pulse-id
                                                         :card_id     card-id
                                                         :position    0
-                                                        :include_csv true}]
+                                                        :include_csv true
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -756,7 +811,9 @@
                   PulseCard             [_              {:pulse_id    pulse-id
                                                          :card_id     card-id
                                                          :position    0
-                                                         :include_csv true}]
+                                                         :include_csv true
+                                                         :max_rows 20
+                                                         :max_columns 10}]
                   PulseChannel          [{pc-id :id}    {:pulse_id pulse-id}]
                   PulseChannelRecipient [_              {:user_id          (rasta-id)
                                                          :pulse_channel_id pc-id}]]
@@ -779,7 +836,9 @@
                                                         :skip_if_empty false}]
                   PulseCard             [_             {:pulse_id    pulse-id
                                                         :card_id     card-id
-                                                        :position    0}]
+                                                        :position    0
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -803,7 +862,9 @@
                   PulseCard             [_             {:pulse_id    pulse-id
                                                         :card_id     card-id
                                                         :position    0
-                                                        :include_xls true}]
+                                                        :include_xls true
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -823,7 +884,9 @@
                                                         :card_id     card-id
                                                         :position    0
                                                         :include_csv true
-                                                        :include_xls true}]
+                                                        :include_xls true
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -841,7 +904,9 @@
                   PulseCard             [_             {:pulse_id    pulse-id
                                                         :card_id     card-id
                                                         :position    0
-                                                        :include_xls true}]
+                                                        :include_xls true
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
@@ -860,7 +925,9 @@
                                                         :card_id     card-id
                                                         :position    0
                                                         :include_csv true
-                                                        :include_xls true}]
+                                                        :include_xls true
+                                                        :max_rows 20
+                                                        :max_columns 10}]
                   PulseChannel          [{pc-id :id}   {:pulse_id pulse-id}]
                   PulseChannelRecipient [_             {:user_id          (rasta-id)
                                                         :pulse_channel_id pc-id}]]
